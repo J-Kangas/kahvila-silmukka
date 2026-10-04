@@ -5,37 +5,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
+    <!--Google Fonts: Nunito-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+    <!--CSS-->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <!--Tästä tulee koko sivun container: header, main ja footer-->
+    <div class="container">
+        <!--Header-->
+        <header class="header">
+            <h1>Kahvila Silmukka</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Etusivu</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="harrastusillat.html">Harrastusillat</a></li>
+                    <li><a href="yhteystiedot.html">Yhteystiedot</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <header>
-        <h1>Kahvila Silmukka</h1>
-        <nav>
+        <!--Main   -->
+        <main class="main">
+            <section>
+                <h2>Meidän menu</h2>
+                <p>Meillä jokainen löytää jotain herkullista kupin viereen.
+                    Valikoimaamme kuuluu kuumia ja kylmiä juomia, suolaista purtavaa
+                    sekä päivittäin leivottuja leivonnaisia ja keksejä.
+                    Valmistamme tuotteemme itse tuoreista raaka-aineista.
+                </p>
+            </section>
+
+            <section>
+                <h2>Kuumat juomat</h2>
+                <p>Kahvi jauhetaan joka aamu.
+                    Kaikki kahvijuomat saa myös kaura- tai laktoosittomalla maidolla.</p>
+                <p>Tulossa hintataulukko</p>
+            </section>
+
+            <section>
+                <h2>Kylmät juomat</h2>
+                <p>Kesäpäivään tai neulontaillan janoon: jääkahvia, mehuja ja kotitekoista limonadia.</p>
+                <p>Tulossa hintataulukko</p>
+            </section>
+
+            <section>
+                <h2>Suolaiset purtavat</h2>
+                <p>Täyttävät piiraat ja sämpylät sopivat lounaaksi tai iltapalaksi ennen harrastusiltaa.</p>
+                <p>Tulossa hintataulukko</p>
+            </section>
+
+            <section>
+                <h2>Leivonnaiset ja keksit</h2>
+                <p>Pullat, kakut ja keksit leivotaan kahvilan omassa keittiössä.</p>
+                <p>Tulossa hintataulukko</p>
+            </section>
+
+            <section>
+                <h2>Merkintöjen selitykset</h2>
+                <p>Taulukoissa olevien merkintöjen selitykset: V = kasvis, VE = vegaaninen, L = laktoositon, G =
+                    gluteeniton</p>
+            </section>
+
+            <section>
+                <h2>Allergiat ja erikoisruokavaliot</h2>
+                <p class="huomio"><strong>Huomio:</strong> Keittiössämme käsitellään vehnää, maitoa ja pähkinöitä. Jos
+                    sinulla on vakava allergia, kerro siitä tilatessasi.</p>
+            </section>
+
+        </main>
+
+        <!--Footer-->
+        <footer class="footer">
+            <address>
+                Kahvila Silmukka<br>
+                Testikuja 1<br>
+                12345 Testilä<br>
+
+                <a href="tel:+358401234567">040 123 4567</a><br>
+                <a href="mailto:info@kahvilasilmukka.fi">info@kahvilasilmukka.fi</a>
+            </address>
+
+            <p>Kahvila Silmukka on avoinna seuraavasti:</p>
             <ul>
-                <li><a href="index.html">Etusivu</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="harrastusillat.html">Harrastusillat</a></li>
-                <li><a href="yhteystiedot.html">Yhteystiedot</a></li>
+                <li>Maanantai - Perjantai: 8:00 - 18:00</li>
+                <li>Lauantai: 9:00 - 16:00</li>
+                <li>Sunnuntai: Suljettu</li>
             </ul>
-        </nav>
-    </header>
 
-    <footer>
-        <p>Kahvila Silmukka</p>
-        <p>Testikuja 1</p>
-        <p>12345 Testilä</p>
-
-        <p>Kahvila Silmukka on avoinna seuraavasti:</p>
-        <ul>
-            <li>Maanantai - Perjantai: 8:00 - 18:00</li>
-            <li>Lauantai: 9:00 - 16:00</li>
-            <li>Sunnuntai: Suljettu</li>
-        </ul>
-
-        <p>&copy; Kahvila Silmukka</p>
-    </footer>
-
+            <p>&copy; Kahvila Silmukka</p>
+        </footer>
+    </div>
 </body>
 
 </html>

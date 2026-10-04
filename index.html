@@ -5,82 +5,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kahvila Silmukka</title>
+    <!--Google Fonts: Nunito-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+    <!--CSS-->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <!--Tästä tulee koko sivun container: header, main ja footer-->
+    <div class="container">
+        <!--Header-->
+        <header class="header">
+            <h1>Kahvila Silmukka</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Etusivu</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="harrastusillat.html">Harrastusillat</a></li>
+                    <li><a href="yhteystiedot.html">Yhteystiedot</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <header>
-        <h1>Kahvila Silmukka</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Etusivu</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="harrastusillat.html">Harrastusillat</a></li>
-                <li><a href="yhteystiedot.html">Yhteystiedot</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section>
-            <h2>Tervetuloa Kahvila Silmukkaan!</h2>
-            <p>Kahvila Silmukka on viihtyisä kahvila, jossa voit nauttia herkullisista leivonnaisista ja kuumista
-                juomista. Tule viettämään aikaa ystävien kanssa tai nauttimaan rauhallisesta hetkestä.</p>
-            <p>Kahvilassa on monipuolinen valikoima juomia ja herkullisia leivoksia. Kahvilassa järjestetään myös
-                erilaisia käsityötapahtumia ja -aktiviteetteja.</p>
-            <!--          <figure>
+        <!--Main-->
+        <main class="main">
+            <section>
+                <h2>Tervetuloa Kahvila Silmukkaan!</h2>
+                <p>Kahvila Silmukka on viihtyisä kahvila, jossa voit nauttia herkullisista leivonnaisista ja kuumista
+                    juomista. Tule viettämään aikaa ystävien kanssa tai nauttimaan rauhallisesta hetkestä.</p>
+                <p>Kahvilassa on monipuolinen valikoima juomia ja herkullisia leivoksia. Kahvilassa järjestetään myös
+                    erilaisia käsityötapahtumia ja -aktiviteetteja.</p>
+                <!--          <figure>
                 <img src="images/kuva1.jpg" alt="Sininen keraaminen lattekuppi lautasella." width="400" height="400">
                 <figcaption>Kuvaaja: Matti Meikäläinen</figcaption>
             </figure>
         -->
-        </section>
+            </section>
 
-        <section>
-            <h2>Kahvilassa saa neuloa</h2>
-            <p>Neulominen ei ole meillä vain tapahtumailtojen ohjelmaa. Voit ottaa oman neuletyösi mukaan ja neuloa
-                kahvilassa myös tavallisen aukioloaikamme aikana. Kahvilassa on tarjolla myös neuleohjeita ja -vinkkejä, jos tarvitset apua tai
-                inspiraatiota.
-            </p>
-        </section>
+            <section>
+                <h2>Kahvilassa saa neuloa</h2>
+                <p>Neulominen ei ole meillä vain tapahtumailtojen ohjelmaa. Voit ottaa oman neuletyösi mukaan ja neuloa
+                    kahvilassa myös tavallisen aukioloaikamme aikana. Kahvilassa on tarjolla myös neuleohjeita ja
+                    -vinkkejä, jos tarvitset apua tai
+                    inspiraatiota.
+                </p>
+            </section>
 
-        <section>
-        <h2>Harrastusillat</h2>
-        <article>
-            <h3>Neulo & juttele</h3>
-            <p>Vapaamuotoinen ilta, jossa jokainen voi neuloa omaa työtään ja jutella muiden harrastajien kanssa.</p>
-        </article>
-        <article>
-            <h3>Tekniikkailta</h3>
-            <p>Tekniikkaillassa opetellaan yhdessä uusi neuletekniikka tai syvennetään jo tuttua taitoa.</p>
-        </article><article>
-            <h3>Vaihtuvat teemaillat</h3>
-            <p>Joskus neulomisen rinnalle tulee myös muita käsitöitä, kuten kirjontaa, virkkausta tai kehräystä.</p>
-        </article>
-        </section>
+            <section>
+                <h2>Harrastusillat</h2>
+                <div class="article-grid">
+                    <article class="card">
+                        <h3>Neulo & juttele</h3>
+                        <p>Vapaamuotoinen ilta, jossa jokainen voi neuloa omaa työtään ja jutella muiden harrastajien
+                            kanssa.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Tekniikkailta</h3>
+                        <p>Tekniikkaillassa opetellaan yhdessä uusi neuletekniikka tai syvennetään jo tuttua taitoa.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Vaihtuvat teemaillat</h3>
+                        <p>Joskus neulomisen rinnalle tulee myös muita käsitöitä, kuten kirjontaa, virkkausta tai
+                            kehräystä.</p>
+                    </article>
+                </div>
+            </section>
 
-         <section>
-            <h2>Tule mukaan</h2>
-            <p>Tutustu tuleviin harrastusilltoihin ja ilmoittaudu mukaan! Paikkoja iltoihin on rajoitetusti.</p>
-            <p><a href="harrastusillat.html">Tutustu harrastusilltoihin</a></p>
-         </section>
+            <section>
+                <h2>Tule mukaan</h2>
+                <p>Tutustu tuleviin harrastusilltoihin ja ilmoittaudu mukaan! Paikkoja iltoihin on rajoitetusti.</p>
+                <p><a href="harrastusillat.html">Tutustu harrastusilltoihin</a></p>
+            </section>
 
-    </main>
+        </main>
 
-    <footer>
-        <p>Kahvila Silmukka</p>
-        <p>Testikuja 1</p>
-        <p>12345 Testilä</p>
+        <!--Footer-->
+        <footer class="footer">
+            <address>
+                Kahvila Silmukka<br>
+                Testikuja 1<br>
+                12345 Testilä<br>
 
-        <p>Kahvila Silmukka on avoinna seuraavasti:</p>
-        <ul>
-            <li>Maanantai - Perjantai: 8:00 - 18:00</li>
-            <li>Lauantai: 9:00 - 16:00</li>
-            <li>Sunnuntai: Suljettu</li>
-        </ul>
+                <a href="tel:+358401234567">040 123 4567</a><br>
+                <a href="mailto:info@kahvilasilmukka.fi">info@kahvilasilmukka.fi</a>
+            </address>
 
-        <p>&copy; Kahvila Silmukka</p>
-    </footer>
+            <p>Kahvila Silmukka on avoinna seuraavasti:</p>
+            <ul>
+                <li>Maanantai - Perjantai: 8:00 - 18:00</li>
+                <li>Lauantai: 9:00 - 16:00</li>
+                <li>Sunnuntai: Suljettu</li>
+            </ul>
 
+            <p>&copy; Kahvila Silmukka</p>
+        </footer>
+
+    </div>
 
 </body>
 
