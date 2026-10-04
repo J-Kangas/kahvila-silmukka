@@ -38,11 +38,6 @@ body {
         "main main"
         "footer footer";
     gap: 10px;
-    max-width: 1200px;
-    margin: 0 auto;
-    /*keskittää layoutin vaakasuunnassa*/
-    /*padding: 20px; */
-    /*Tämä padding aiheuttaa reunusta headeriin ja muihin */
 }
 
 /* ===== OTSIKOT ===== */
@@ -72,7 +67,7 @@ a:hover {
     grid-area: header;
     background-color: var(--paavari);
     color: var(--tausta);
-    padding: 20px;
+    padding: 20px 40px;
 }
 
 .header ul {
@@ -93,7 +88,7 @@ a:hover {
 
 .main {
     grid-area: main;
-    padding: 20px;
+    padding: 20px 40px;
 }
 
 .main section {
@@ -153,7 +148,7 @@ a:hover {
     grid-area: footer;
     background-color: var(--paavari);
     color: var(--tausta);
-    padding: 20px;
+    padding: 20px 40px;
 }
 
 .footer address {
