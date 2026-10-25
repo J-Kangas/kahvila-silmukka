@@ -12,16 +12,19 @@
         rel="stylesheet">
     <!--CSS linkitetty-->
     <link rel="stylesheet" href="css/style.css">
+    <!--Favicon: SVG nykyselaimelle ja ICO vanhoille selaimille varalla-->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" sizes="64x64">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="top">
 
         <!--Header-->
-        <header class="header">
+        <header class="header navbar">
             <h1>Kahvila Silmukka</h1>
             <nav>
-                <ul>
+                <ul class="nav-links">
                     <li><a href="index.html">Etusivu</a></li>
                     <li><a href="menu.html">Menu</a></li>
                     <li><a href="harrastusillat.html">Harrastusillat</a></li>
@@ -54,12 +57,55 @@
                 <p>Kahvila Silmukka sijaitsee Testilän keskustassa,
                     Testikujan ja Asemakadun kulmassa.
                     Rautatieasema ja kauppakeskus ovat molemmat noin viiden minuutin kävelymatkan päässä.</p>
-                <p><strong>Junalla:</strong> Kävele asemalta Asemakatua pitkin keskustaan päin noin 300 metriä.
-                    Kahvila on vasemmalla puolella, ja sen tunnistaa vihreästä markiisista.</p>
-                <p><strong>Bussilla:</strong> Lähin pysäkki on Kauppakeskus, josta on noin 200 metriä kahvilalle.</p>
-                <p><strong>Autolla:</strong> Lähimmät pysäköintipaikat ovat kauppakeskuksen pysäköintihallissa.
-                    Kahvilan edessä on kaksi lyhytaikaista pysäköintipaikkaa.</p>
-                <p><strong>Pyörällä:</strong> Kahvilan edessä on katettu pyöräteline.</p>
+                <div class="transport-modes">
+
+                    <div class="transport-flip"> <!--Ulkokehys, joka luo 3D-tilan ja ottaa vastaan hiiren hover-tilan-->
+                        <div class="transport-flip-inner">
+                            <!--Pyörivä taso ja sen sisällä on kaksipuolinen kortti (molemmat puolet)-->
+                            <div class="transport-mode-item"> <!--Kortin etupuoli-->
+                                <h3>Junalla</h3>
+                                <p>Kävele asemalta Asemakatua pitkin keskustaan päin noin 300 metriä.
+                                    Kahvila on vasemmalla puolella, ja sen tunnistaa vihreästä markiisista.</p>
+                            </div>
+                            <!--Kortin kääntöpuoli-->
+                            <!--aria-hidden="true" piilottaa elementin ruudunlukijalta, jotta se ei lue turhaan
+                            emojia, esim. juna, etupuolen tekstin jälkeen, koska se on vain hauska koriste sivulle. -->
+                            <!--Heksadesimaalikoodi junaemojille-->
+                            <div class="transport-mode-item backside" aria-hidden="true">&#x1F686;</div>
+                        </div>
+                    </div>
+
+                    <div class="transport-flip">
+                        <div class="transport-flip-inner">
+                            <div class="transport-mode-item">
+                                <h3>Bussilla</h3>
+                                <p>Lähin pysäkki on Kauppakeskus, josta on noin 200 metriä kahvilalle.</p>
+                            </div>
+                            <div class="transport-mode-item backside" aria-hidden="true">&#x1F68C;</div>
+                        </div>
+                    </div>
+
+                    <div class="transport-flip">
+                        <div class="transport-flip-inner">
+                            <div class="transport-mode-item">
+                                <h3>Autolla</h3>
+                                <p>Lähimmät pysäköintipaikat ovat kauppakeskuksen pysäköintihallissa.
+                                    Kahvilan edessä on kaksi lyhytaikaista pysäköintipaikkaa.</p>
+                            </div>
+                            <div class="transport-mode-item backside" aria-hidden="true">&#x1F697;</div>
+                        </div>
+                    </div>
+
+                    <div class="transport-flip">
+                        <div class="transport-flip-inner">
+                            <div class="transport-mode-item">
+                                <h3>Pyörällä</h3>
+                                <p>Kahvilan edessä on katettu pyöräteline, jossa on paikkoja 10 pyörälle.</p>
+                            </div>
+                            <div class="transport-mode-item backside" aria-hidden="true">&#x1F6B2;</div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section>
@@ -93,24 +139,32 @@
 
         <!--Footer-->
         <footer class="footer">
-            <address>
-                Kahvila Silmukka<br>
-                Testikuja 1<br>
-                12345 Testilä<br>
+            <div class="footer-info">
+                <address>
+                    Kahvila Silmukka<br>
+                    Testikuja 1<br>
+                    12345 Testilä<br>
 
-                <a href="tel:+358401234567">040 123 4567</a><br>
-                <a href="mailto:info@kahvilasilmukka.fi">info@kahvilasilmukka.fi</a>
-            </address>
+                    <a href="tel:+358401234567">040 123 4567</a><br>
+                    <a href="mailto:info@kahvilasilmukka.fi">info@kahvilasilmukka.fi</a>
+                </address>
+                <p>&copy; Kahvila Silmukka</p>
+            </div>
 
-            <p>Kahvila Silmukka on avoinna seuraavasti:</p>
-            <ul>
-                <li>Maanantai - Perjantai: 8:00 - 18:00</li>
-                <li>Lauantai: 9:00 - 16:00</li>
-                <li>Sunnuntai: Suljettu</li>
-            </ul>
+            <div class="footer-hours">
+                <p>Kahvila Silmukka on avoinna seuraavasti:</p>
+                <ul>
+                    <li>Maanantai - Perjantai: 8:00 - 18:00</li>
+                    <li>Lauantai: 9:00 - 16:00</li>
+                    <li>Sunnuntai: Suljettu</li>
+                </ul>
 
-            <p>&copy; Kahvila Silmukka</p>
+            </div>
+            <!--Takaisin-ylös-näppäin-->
+            <a class="back-to-beginning" href="#top" aria-label="Takaisin sivun alkuun">&uarr;</a>
+
         </footer>
+
     </div>
 </body>
 

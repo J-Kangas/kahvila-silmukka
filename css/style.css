@@ -1,16 +1,36 @@
+@charset "UTF-8";
+/* Jotta ääkköset toimivat oikein */
+
+/********************************************************
+        YLEISET MÄÄRITYKSET (kaikilla sivuilla)
+*********************************************************/
+
 /* ===== MUUTTUJAT ===== */
-/* Sivuston värit yhdessä paikassa */
+/* Sivuston värit yhdessä paikassa. Värit on nimetty käyttötarkoituksen (roolin)
+   mukaan, jotta yhden roolin värin voi vaihtaa vaikuttamatta muihin. */
 
 :root {
-    --paavari: #4F6F5E;
-    --tausta: #F4F6F3;
-    --teksti: #2B3230;
-    /*    --harmaa: #8A9591; */
-    --korostus: #B07A4F;
+    /* Tumma väripaletti: header, footer ja tummat kortit */
+    --tumma-tausta: #3A5547;
+    --tumma-teksti: #F4F6F3;
+    --tumma-linkki: #D6E8F0;
+    --tumma-hover: #A9D0E0;
+    --tumma-koriste: #8DB4C7;
+
+    /* Vaalea väripaletti: sivun tausta ja vaaleat kortit */
+    --vaalea-tausta: #F4F6F3;
+    --vaalea-kortti: #FFFFFF;
+    --vaalea-teksti: #2B3230;
+    /* --vaalea-teksti-toissijainen: #5F6B66; */ /*Varalla, jos tarvitaan lisäväriä*/
+    --vaalea-linkki: #4F6F5E;
+    --vaalea-hover: #3D5A80;
+    --vaalea-korostus: #3D5A80;
+    --vaalea-koriste: #8DB4C7;
 }
 
 /* ===== RESET (Oletustyylien nollaus) ===== */
-/* Nollataan selainten oletusvälit ja käytetään border-box-laatikkomallia */
+/* Nollataan selainten oletusvälit ja käytetään border-box-laatikkomallia,
+   jolloin padding ja reunus lasketaan mukaan elementin leveyteen */
 
 * {
     box-sizing: border-box;
@@ -22,22 +42,9 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--tausta);
-    color: var(--teksti);
+    background-color: var(--vaalea-tausta);
+    color: var(--vaalea-teksti);
     line-height: 1.5;
-}
-
-/* ===== LAYOUT ===== */
-
-.container {
-    display: grid;
-    grid-template-columns: 20% 1fr;
-    /*Nimetyt alueet*/
-    grid-template-areas:
-        "header header"
-        "main main"
-        "footer footer";
-    gap: 10px;
 }
 
 /* ===== OTSIKOT ===== */
@@ -52,37 +59,79 @@ h3 {
 }
 
 /* ===== LINKIT ===== */
+/* Vaalean pinnan linkit. Headerin ja footerin linkeille on omat säännöt. */
+
 a {
-    color: var(--paavari);
+    color: var(--vaalea-linkki);
 }
 
 a:hover {
-    color: var(--korostus);
+    color: var(--vaalea-hover);
 }
 
+/********************************************************
+        SIVUN RAKENNE (HTML:n järjestyksessä)
+*********************************************************/
+ 
+/* ===== SIVUPOHJA ===== */
+ 
+/* Sivupohja on yksi sarake, jossa header, main ja footer ovat allekkain.
+   Nimetyt alueet näyttävät rakenteen yhdellä silmäyksellä ja helpottavat
+   laajentamista myöhemmin (esim. sivupalkki). */
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    /*Nimetyt alueet: sivupohja on yksi sarake, jossa header, main ja footer ovat allekkain*/
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+    gap: 10px;
+}
 
 /* ===== HEADER ===== */
 
+/* Sticky: header pysyy näkyvissä ikkunan yläreunassa sivua rullattaessa.
+   Flex: kahvilan nimi vasemmalle ja navigaatio oikealle samalle riville. */
+
 .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     grid-area: header;
-    background-color: var(--paavari);
-    color: var(--tausta);
-    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--tumma-tausta);
+    color: var(--tumma-teksti);
+    padding: 20px 40px;   
 }
+
+/* --- Navigaatio --- */
 
 .header ul {
     list-style: none;
 }
 
+/* Navigaatiolinkit vierekkäin */
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
 /* Poikkeus: linkit header-osion sisällä */
 .header a {
-    color: var(--tausta);
+    color: var(--tumma-linkki);
     text-decoration: none;
 }
 
 .header a:hover {
     text-decoration: underline;
+    color: var(--tumma-hover);
 }
+
 
 /* ===== MAIN ===== */
 
@@ -91,7 +140,10 @@ a:hover {
     padding: 20px 40px;
 }
 
-.main section {
+/* Pääosioiden väli. Lapsivalitsin (>) rajaa säännön mainin suoriin lapsiin,
+   joten ruudukoiden sisällä olevien korttien välit hoidetaan gapilla. */
+.main > section,
+.menu-items {
     margin-bottom: 40px;
 }
 
@@ -107,18 +159,20 @@ a:hover {
     margin-bottom: 20px;
 }
 
-.huomio {
-    padding: 18px;
-    border-left: 6px solid var(--korostus);
-}
-
 .main address {
     font-style: normal;
     margin-bottom: 20px;
 }
 
-/* ===== KORTIT ===== */
+/* Huomiolaatikko (menu: allergiat) */
+.huomio {
+    padding: 18px;
+    border-left: 6px solid var(--vaalea-korostus);
+}
 
+/* --- Etusivun ja harrastusiltojen kortit --- */
+
+/* Kortit asettuvat riviin niin monta kuin mahtuu, vähintään 200 px levyisinä */
 .article-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -126,12 +180,12 @@ a:hover {
 }
 
 .card {
-    background-color: var(--paavari);
-    color: var(--tausta);
-    border: 3px solid var(--korostus);
+    background-color: var(--tumma-tausta);
+    color: var(--tumma-teksti);
+    border: 3px solid var(--tumma-koriste);
     border-radius: 6px;
     padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .card h3 {
@@ -142,35 +196,171 @@ a:hover {
     margin-bottom: 8px;
 }
 
+/* --- Menu-kortit --- */
+ 
+/* Kiinteä 2 × 2 -ruudukko: juomat ylärivillä, ruoat alarivillä */
+
+.menu-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Katkoviivainen "tikkaus" kortin sisäreunassa */
+.menu-card {
+    background-color: var(--vaalea-kortti);
+    color: var(--vaalea-teksti);
+    outline: 3px dashed var(--vaalea-koriste);
+    outline-offset: -10px;
+    border-radius: 6px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Kulkutapakortit (yhteystiedot) --- */
+
+/* Kortit 2 × 2 -ruudukkoon */
+.transport-modes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 20px;
+}
+
+/* Kääntökortti: ulkokehys luo 3D-tilan. Se ei itse liiku,
+   joten hover pysyy vakaana kortin kääntyessä. */
+.transport-flip {
+    perspective: 800px;
+    display: grid;
+}
+
+/* Pyörivä taso: molemmat puolet pinotaan samaan grid-soluun,
+   jolloin kortin korkeus määräytyy sisällön mukaan */
+.transport-flip-inner {
+    display: grid;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.transport-flip:hover .transport-flip-inner {
+    transform: rotateY(180deg);
+}
+
+/* Kortin molemmat puolet: sama ulkoasu, ja kääntöpuoli piilossa,
+   kun se on poispäin katsojasta */
+.transport-mode-item {
+    background-color: var(--vaalea-kortti);
+    color: var(--vaalea-teksti);
+    outline: 6px double var(--vaalea-koriste);
+    outline-offset: -10px;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    grid-area: 1 / 1;
+    backface-visibility: hidden;
+}
+
+/* Kääntöpuoli: valmiiksi käännetty, emoji isona keskellä */
+.transport-mode-item.backside {
+    transform: rotateY(180deg);
+    display: grid;
+    place-items: center;
+    font-size: 4rem;
+}
+
+/*Ei kääntöanimaatiota, jos käyttäjä on kytkenyt liikkeen vähentämisen päälle käyttöjärjestelmästään*/
+@media (prefers-reduced-motion: reduce) {
+    .transport-flip-inner {
+        transition: none;
+    }
+}
+
+/* --- Korttien yhteiset --- */
+
+/* Poistetaan viimeisen kappaleen marginaali menu- ja kulkuneuvo-korteista,
+jotta ylä- ja alareunan välit ovat yhtäsuuret. */
+.menu-card p:last-child,
+.transport-mode-item p:last-child {
+    margin-bottom: 0;
+}
+
 /* ===== FOOTER ===== */
+
+/* Flexbox: yhteystiedot vasemmalle ja aukioloajat oikealle */
 
 .footer {
     grid-area: footer;
-    background-color: var(--paavari);
-    color: var(--tausta);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: var(--tumma-tausta);
+    color: var(--tumma-teksti);
     padding: 20px 40px;
+}
+
+/* Ryhmien sisältö allekkain tasaisin välein */
+.footer-info,
+.footer-hours {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .footer address {
     font-style: normal;
-    margin-bottom: 20px;
 }
 
-/* Poikkeus: linkit footer-osion sisällä */
+.footer ul {
+    list-style: none;
+}
+
+/*
+.footer p {
+    margin-bottom: 10px;
+}
+*/
+
+
+/* Poikkeus: footerin linkit tumman pinnan väreillä */
 .footer a {
-    color: var(--tausta);
+    color: var(--tumma-linkki);
     text-decoration: none;
 }
 
 .footer a:hover {
     text-decoration: underline;
+    color: var(--tumma-hover);
 }
 
-.footer p {
-    margin-bottom: 10px;
+/* --- Takaisin ylös -painike --- */
+ 
+/* Fixed: painike pysyy oikeassa alakulmassa sivua rullattaessa.
+   Kaksi luokkaa valitsimessa, jotta sääntö voittaa .footer a -säännön. */
+
+.footer .back-to-beginning { 
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index:200;
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    background-color: var(--vaalea-kortti);
+    color: var(--tumma-tausta);
+    border: 3px solid transparent;
+    border-radius: 50%;
+    font-size: 2rem;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.footer ul {
-    list-style: none;
-    margin-bottom: 20px;
+/* Hover ja focus: käänteiset värit ja vaalea reunus, jotta painike
+   erottuu myös footerin tummaa taustaa vasten */
+.footer .back-to-beginning:hover, .footer .back-to-beginning:focus {
+    background-color: var(--tumma-tausta);
+    color: var(--tumma-teksti);
+    border-color: var(--tumma-teksti);
+    text-decoration: none;
+
 }

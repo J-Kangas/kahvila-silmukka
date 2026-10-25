@@ -12,16 +12,19 @@
         rel="stylesheet">
     <!--CSS linkitetty-->
     <link rel="stylesheet" href="css/style.css">
+    <!--Favicon: SVG nykyselaimelle ja ICO vanhoille selaimille varalla-->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" sizes="64x64">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="top">
 
         <!--Header-->
-        <header class="header">
+        <header class="header navbar">
             <h1>Kahvila Silmukka</h1>
             <nav>
-                <ul>
+                <ul class="nav-links">
                     <li><a href="index.html">Etusivu</a></li>
                     <li><a href="menu.html">Menu</a></li>
                     <li><a href="harrastusillat.html">Harrastusillat</a></li>
@@ -99,24 +102,32 @@
 
         <!--Footer-->
         <footer class="footer">
-            <address>
-                Kahvila Silmukka<br>
-                Testikuja 1<br>
-                12345 Testilä<br>
+            <div class="footer-info">
+                <address>
+                    Kahvila Silmukka<br>
+                    Testikuja 1<br>
+                    12345 Testilä<br>
 
-                <a href="tel:+358401234567">040 123 4567</a><br>
-                <a href="mailto:info@kahvilasilmukka.fi">info@kahvilasilmukka.fi</a>
-            </address>
+                    <a href="tel:+358401234567">040 123 4567</a><br>
+                    <a href="mailto:info@kahvilasilmukka.fi">info@kahvilasilmukka.fi</a>
+                </address>
+                <p>&copy; Kahvila Silmukka</p>
+            </div>
 
-            <p>Kahvila Silmukka on avoinna seuraavasti:</p>
-            <ul>
-                <li>Maanantai - Perjantai: 8:00 - 18:00</li>
-                <li>Lauantai: 9:00 - 16:00</li>
-                <li>Sunnuntai: Suljettu</li>
-            </ul>
+            <div class="footer-hours">
+                <p>Kahvila Silmukka on avoinna seuraavasti:</p>
+                <ul>
+                    <li>Maanantai - Perjantai: 8:00 - 18:00</li>
+                    <li>Lauantai: 9:00 - 16:00</li>
+                    <li>Sunnuntai: Suljettu</li>
+                </ul>
 
-            <p>&copy; Kahvila Silmukka</p>
+            </div>
+            <!--Takaisin-ylös-näppäin-->
+            <a class="back-to-beginning" href="#top" aria-label="Takaisin sivun alkuun">&uarr;</a>
+
         </footer>
+
     </div>
 </body>
 
