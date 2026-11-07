@@ -35,17 +35,36 @@
 
         <!--Main-->
         <main class="main">
-            <section>
-                <h2>Tervetuloa Kahvila Silmukkaan!</h2>
-                <p>Kahvila Silmukka on viihtyisä kahvila, jossa voit nauttia herkullisista leivonnaisista ja kuumista
-                    juomista. Tule viettämään aikaa ystävien kanssa tai nauttimaan rauhallisesta hetkestä.</p>
-                <p>Kahvilassa on monipuolinen valikoima juomia ja herkullisia leivoksia. Kahvilassa järjestetään myös
-                    erilaisia käsityötapahtumia ja -aktiviteetteja.</p>
-                <!--          <figure>
-                <img src="images/kuva1.jpg" alt="Sininen keraaminen lattekuppi lautasella." width="400" height="400">
-                <figcaption>Kuvaaja: Matti Meikäläinen</figcaption>
-            </figure>
-        -->
+            <section class="hero">
+                <picture class="hero-picture">
+                    <source type="image/avif" srcset="images/hero-1280.avif 1280w,
+                    images/hero-1920.avif 1920w" sizes="100vw">
+
+                    <source type="image/webp" srcset="images/hero-1280.webp 1280w,
+                    images/hero-1920.webp 1920w" sizes="100vw">
+
+                    <!--Varavaihtoehto, jos edelliset ei toimi selaimessa-->
+                    <img src="images/hero-1920.jpg"
+                        alt="Kahvikuppi lautasella neulotun peiton päällä, vieressä avoin kirja ja samettinen kurpitsa."
+                        width="1920" height="1424" fetchpriority="high">
+                </picture>
+
+                <div class="hero-text">
+                    <h2>Tervetuloa Kahvila Silmukkaan!</h2>
+                </div>
+                <div class="hero-intro">
+                    <p>Kahvila Silmukka avasi ovensa Testilän keskustassa vuonna 2019. Perustajamme oli pitkään
+                        haaveillut paikasta, jossa hyvä kahvi
+                        ja käsityöt kohtaavat: kahvilasta, jonne voi tulla neuletyön kanssa ilman erillistä syytä ja
+                        jossa saman
+                        pöydän ääressä istuvat niin kokeneet neulojat kuin ensimmäistä silmukkaansa opettelevatkin.</p>
+                    <p>Haaveesta tuli totta, ja nykyään Silmukka on sekä lähiseudun kahvila että käsityöharrastajien
+                        kohtaamispaikka.
+                        Täällä voi nauttia aamukahvista, tavata ystäviä tai viettää rauhallisen iltapäivän puikot
+                        kädessä.</p>
+                    <p>Leivomme pullat, kakut ja keksit omassa keittiössämme, ja kahvi jauhetaan joka aamu. Valikoimasta
+                        löytyy myös suolaista purtavaa sekä vaihtoehtoja erityisruokavalioille.</p>
+                </div>
             </section>
 
             <section>
@@ -81,6 +100,15 @@
                 <h2>Tule mukaan</h2>
                 <p>Tutustu tuleviin harrastusilltoihin ja ilmoittaudu mukaan! Paikkoja iltoihin on rajoitetusti.</p>
                 <p><a href="harrastusillat.html">Tutustu harrastusilltoihin</a></p>
+            </section>
+
+            <section>
+                <h2>Kuuntele, miltä meillä kuulostaa</h2>
+                <p>Kahvikoneen surinaa, kuppien kilinää ja hiljaista puheensorinaa. Sulje silmät ja kuvittele itsesi nojatuoliin neuletyön kanssa.</p>
+                <audio controls preload="none">
+                    <source src="media/cafe-ambience.mp3" type="audio/mpeg">
+                    Selaimesi ei tue äänen toistoa.
+                </audio>
             </section>
 
         </main>

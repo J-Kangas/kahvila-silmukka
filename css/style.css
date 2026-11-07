@@ -21,7 +21,8 @@
     --vaalea-tausta: #F4F6F3;
     --vaalea-kortti: #FFFFFF;
     --vaalea-teksti: #2B3230;
-    /* --vaalea-teksti-toissijainen: #5F6B66; */ /*Varalla, jos tarvitaan lisäväriä*/
+    /* --vaalea-teksti-toissijainen: #5F6B66; */
+    /*Varalla, jos tarvitaan lisäväriä*/
     --vaalea-linkki: #4F6F5E;
     --vaalea-hover: #3D5A80;
     --vaalea-korostus: #3D5A80;
@@ -69,12 +70,22 @@ a:hover {
     color: var(--vaalea-hover);
 }
 
+/* ===== KUVAT ===== */
+
+/* Kuva ei koskaan kasva sisältöaluettaan leveämmäksi,
+   ja korkeus skaalautuu kuvasuhteen mukaan */
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 /********************************************************
         SIVUN RAKENNE (HTML:n järjestyksessä)
 *********************************************************/
- 
+
 /* ===== SIVUPOHJA ===== */
- 
+
 /* Sivupohja on yksi sarake, jossa header, main ja footer ovat allekkain.
    Nimetyt alueet näyttävät rakenteen yhdellä silmäyksellä ja helpottavat
    laajentamista myöhemmin (esim. sivupalkki). */
@@ -106,7 +117,7 @@ a:hover {
     gap: 20px;
     background-color: var(--tumma-tausta);
     color: var(--tumma-teksti);
-    padding: 20px 40px;   
+    padding: 20px 40px;
 }
 
 /* --- Navigaatio --- */
@@ -142,7 +153,7 @@ a:hover {
 
 /* Pääosioiden väli. Lapsivalitsin (>) rajaa säännön mainin suoriin lapsiin,
    joten ruudukoiden sisällä olevien korttien välit hoidetaan gapilla. */
-.main > section,
+.main>section,
 .menu-items {
     margin-bottom: 40px;
 }
@@ -163,6 +174,52 @@ a:hover {
     font-style: normal;
     margin-bottom: 20px;
 }
+
+/* --- Hero (etusivu) --- */
+
+/* negatiiviset marginaalit kumoavat mainin paddingin (ja containerin gapin), jolloin hero ulottuu reunasta reunaan */
+.hero {
+    margin-left: -40px;
+    margin-right: -40px;
+    margin-top: -30px;
+    position: relative;
+}
+
+.hero-picture {
+    display: block;
+}
+
+.hero img {
+    display: block;
+    width: 100%;
+    height: 60vh;
+    /* 60 % ikkunan korkeudesta */
+    object-fit: cover;
+    object-position: 65% 55%;
+    /* tavoitteena kahvikuppi ja neule näkyviin */
+}
+
+.hero-text {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    background-color: rgba(58, 85, 71, 0.85);
+    color: var(--tumma-teksti);
+    padding: 20px;
+    border-radius: 6px;
+}
+
+/* tekstilaatikko sijoitetaan kuvan päälle kirjan kohdalle, läpikuultava tausta takaa kontrastin */
+.hero-text h2{
+    margin-bottom: 0;
+}
+
+.hero-intro {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 20px;
+}
+
 
 /* Huomiolaatikko (menu: allergiat) */
 .huomio {
@@ -197,7 +254,7 @@ a:hover {
 }
 
 /* --- Menu-kortit --- */
- 
+
 /* Kiinteä 2 × 2 -ruudukko: juomat ylärivillä, ruoat alarivillä */
 
 .menu-items {
@@ -215,6 +272,105 @@ a:hover {
     border-radius: 6px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* kuvat ovat eri muotoisia, joten ne rajataan samaan 16:9-suhteeseen, jotta kortit ovat yhtenäiset. */
+.menu-picture {
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+/* --- Kuvakaruselli (harrastusillat) --- */
+
+.carousel {
+    display: flex;
+    flex-wrap: nowrap; /* estetään rivistys, jotta kuvat pysyvät samassa rivissä */
+    gap: 20px; /* väli kuvien välillä */
+    overflow-x: auto; /*salli vaakasuuntainen vieritys*/
+    scroll-snap-type: x mandatory; /*snap-toiminto, kuvat pysähtyvät vierittäessä
+    ja tarvitsee kaveriksi scroll-snap-align */
+    scroll-behavior: smooth; /*pehmeä vieritys*/
+    padding-bottom: 20px; /* lisätään hieman tilaa alareunaan, esim. korttien varjoille. */
+    scrollbar-width: none; /* ei vierityspalkkia */
+}
+
+.carousel-item {
+    flex: 0 0 40%; /*kuvat vievät 40% tilasta, eivät veny*/
+    scroll-snap-align: center; /*snap-toiminto, kuvat pysähtyvät vierittäessä */
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.20);
+}
+
+.carousel-item img {
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: cover; /*kuva täyttää tilan, mutta ei veny*/
+    display: block; /*poistetaan kuvan alareunan pieni tyhjä tila*/
+}
+
+.carousel-item figcaption {
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+    color: var(--vaalea-teksti);
+}
+
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;  
+}
+
+/* Numerolinkit pyöreiksi palloiksi: kiinteä koko ja keskitetty numero */
+.carousel-nav a {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    color: var(--tumma-teksti);
+    text-decoration: none;
+    background-color: var(--tumma-tausta);
+    border: 2px solid transparent; /* varaa tilan hover-reunukselle, jottei pallo kasva */
+}
+
+/* Hover ja focus: käänteiset värit ja tumma reunus, jotta valittu pallo erottuu */
+.carousel-nav a:hover,
+.carousel-nav a:focus {
+    background-color: var(--vaalea-kortti);
+    color: var(--tumma-tausta);
+    border-color: var(--tumma-tausta);
+}
+
+/* --- Yhteystiedot ja kuva (yhteystiedot) --- */
+
+.contact-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 50px;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-info dl {
+    margin-top: 20px;
+}
+
+.contact-picture {
+    display: block;
+    max-width: 40%;
+    border-radius: 6px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    object-position: left;
 }
 
 /* --- Kulkutapakortit (yhteystiedot) --- */
@@ -268,8 +424,13 @@ a:hover {
     font-size: 4rem;
 }
 
-/*Ei kääntöanimaatiota, jos käyttäjä on kytkenyt liikkeen vähentämisen päälle käyttöjärjestelmästään*/
+/*Ei karusellin vieritystä ja kääntöanimaatiota, jos käyttäjä on kytkenyt liikkeen vähentämisen päälle käyttöjärjestelmästään*/
 @media (prefers-reduced-motion: reduce) {
+
+    .carousel {
+        scroll-behavior: auto;
+    }
+
     .transport-flip-inner {
         transition: none;
     }
@@ -333,15 +494,15 @@ jotta ylä- ja alareunan välit ovat yhtäsuuret. */
 }
 
 /* --- Takaisin ylös -painike --- */
- 
+
 /* Fixed: painike pysyy oikeassa alakulmassa sivua rullattaessa.
    Kaksi luokkaa valitsimessa, jotta sääntö voittaa .footer a -säännön. */
 
-.footer .back-to-beginning { 
+.footer .back-to-beginning {
     position: fixed;
     right: 22px;
     bottom: 22px;
-    z-index:200;
+    z-index: 200;
     display: grid;
     place-items: center;
     width: 58px;
@@ -357,7 +518,8 @@ jotta ylä- ja alareunan välit ovat yhtäsuuret. */
 
 /* Hover ja focus: käänteiset värit ja vaalea reunus, jotta painike
    erottuu myös footerin tummaa taustaa vasten */
-.footer .back-to-beginning:hover, .footer .back-to-beginning:focus {
+.footer .back-to-beginning:hover,
+.footer .back-to-beginning:focus {
     background-color: var(--tumma-tausta);
     color: var(--tumma-teksti);
     border-color: var(--tumma-teksti);
