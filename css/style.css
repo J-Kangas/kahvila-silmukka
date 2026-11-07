@@ -199,6 +199,7 @@ img {
     /* tavoitteena kahvikuppi ja neule näkyviin */
 }
 
+/* tekstilaatikko sijoitetaan kuvan päälle kirjan kohdalle, läpikuultava tausta takaa kontrastin */
 .hero-text {
     position: absolute;
     top: 10%;
@@ -209,7 +210,6 @@ img {
     border-radius: 6px;
 }
 
-/* tekstilaatikko sijoitetaan kuvan päälle kirjan kohdalle, läpikuultava tausta takaa kontrastin */
 .hero-text h2{
     margin-bottom: 0;
 }
@@ -274,7 +274,7 @@ img {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* kuvat ovat eri muotoisia, joten ne rajataan samaan 16:9-suhteeseen, jotta kortit ovat yhtenäiset. */
+/* kuvat ovat eri muotoisia, joten ne rajataan samaan 4:3-suhteeseen, jotta kortit ovat yhtenäiset. */
 .menu-picture {
     aspect-ratio: 4/3;
     object-fit: cover;
@@ -285,6 +285,8 @@ img {
 
 /* --- Kuvakaruselli (harrastusillat) --- */
 
+/* vierityspalkki näyttää, että karusellia voi vierittää (joillekin suosikkitapa), ja numeropallot vievät suoraan haluttuun kuvaan myös näppäimistöllä. */
+
 .carousel {
     display: flex;
     flex-wrap: nowrap; /* estetään rivistys, jotta kuvat pysyvät samassa rivissä */
@@ -293,8 +295,10 @@ img {
     scroll-snap-type: x mandatory; /*snap-toiminto, kuvat pysähtyvät vierittäessä
     ja tarvitsee kaveriksi scroll-snap-align */
     scroll-behavior: smooth; /*pehmeä vieritys*/
-    padding-bottom: 20px; /* lisätään hieman tilaa alareunaan, esim. korttien varjoille. */
-    scrollbar-width: none; /* ei vierityspalkkia */
+    padding-bottom: 25px; /* lisätään hieman tilaa alareunaan, esim. korttien varjoille. */
+    scrollbar-width: thin;
+    scrollbar-color: var(--tumma-tausta) var(--vaalea-tausta);
+
 }
 
 .carousel-item {
@@ -474,13 +478,6 @@ jotta ylä- ja alareunan välit ovat yhtäsuuret. */
 .footer ul {
     list-style: none;
 }
-
-/*
-.footer p {
-    margin-bottom: 10px;
-}
-*/
-
 
 /* Poikkeus: footerin linkit tumman pinnan väreillä */
 .footer a {
