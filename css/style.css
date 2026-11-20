@@ -158,6 +158,14 @@ img {
     margin-bottom: 40px;
 }
 
+/* Sisältö keskitetään enintään 1100 px levyiseksi palstaksi.
+   :not(.hero) jättää hero-kuvan ulkopuolelle, jotta se ulottuu edelleen reunasta reunaan. */
+.main > *:not(.hero) {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .main h2 {
     margin-bottom: 20px;
 }
@@ -214,10 +222,11 @@ img {
     margin-bottom: 0;
 }
 
+/* Sama 1100 px palsta kuin muulla sisällöllä: 1100 px + 2 × 40 px paddingia = 1180 px */
 .hero-intro {
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-top: 20px;
+    max-width: 1180px;
+    margin: 20px auto 0;
+    padding: 0 40px;
 }
 
 
@@ -267,6 +276,32 @@ img {
 
 .event {
     margin-bottom: 16px;
+}
+
+/* --- Toimintakehote-painike (etusivu) --- */
+
+/* Linkki painikkeen näköiseksi, samat värit kuin lomakkeiden Lähetä-painikkeessa.
+   inline-block, jotta pystysuuntainen padding kasvattaa painikkeen korkeutta. */
+.cta-button {
+    display: inline-block;
+    background-color: var(--tumma-tausta);
+    color: var(--tumma-teksti);
+    font-weight: 700;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+}
+
+/* Kaksi valitsinta ohittaa yleisen a:hover-säännön */
+.cta-button:hover,
+.cta-button:focus {
+    background-color: var(--vaalea-korostus);
+    color: var(--tumma-teksti);
+}
+
+.cta-button:focus {
+    outline: 3px solid var(--vaalea-korostus);
+    outline-offset: 2px;
 }
 
 /* --- Menu-kortit --- */
@@ -713,7 +748,7 @@ jotta ylä- ja alareunan välit ovat yhtäsuuret. */
     gap: 20px;
     background-color: var(--tumma-tausta);
     color: var(--tumma-teksti);
-    padding: 20px 40px;
+    padding: 20px max(40px, calc((100% - 1100px) / 2));
 }
 
 /* Ryhmien sisältö allekkain tasaisin välein */

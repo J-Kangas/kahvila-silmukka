@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sivun kuvaus hakukoneille -->
+    <meta name="description" content="Kahvila Silmukka tarjoaa kuumia ja kylmiä juomia, leivonnaisia ja suolaista purtavaa, myös vegaanisena ja gluteenittomana. Tule mukaan käsityöiltoihin!">
     <title>Kahvila Silmukka</title>
     <!--Google Fonts: Nunito-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap"
+    rel="stylesheet">
     <!--CSS linkitetty-->
     <link rel="stylesheet" href="css/style.css">
     <!--Favicon: SVG nykyselaimelle ja ICO vanhoille selaimille varalla-->
@@ -94,13 +96,13 @@
             <section>
                 <h2>Tule mukaan</h2>
                 <p>Tutustu tuleviin harrastusilltoihin ja ilmoittaudu mukaan! Paikkoja iltoihin on rajoitetusti.</p>
-                <p><a href="harrastusillat.html">Tutustu harrastusilltoihin</a></p>
+                <p><a class="cta-button" href="harrastusillat.html">Tutustu harrastusilltoihin</a></p>
             </section>
 
             <section>
                 <h2>Kuuntele, miltä meillä kuulostaa</h2>
-                <p>Kahvikoneen surinaa, kuppien kilinää ja hiljaista puheensorinaa. Sulje silmäsi ja kuvittele itsesi Kahvila Silmukkaan.</p>
-                <audio controls preload="none">
+                <p id="aani-kuvaus">Kahvikoneen surinaa, kuppien kilinää ja hiljaista puheensorinaa. Sulje silmäsi ja kuvittele itsesi Kahvila Silmukkaan.</p>
+                <audio controls preload="none" aria-describedby="aani-kuvaus">
                     <source src="media/cafe-ambience.mp3" type="audio/mpeg">
                     Selaimesi ei tue äänen toistoa.
                 </audio>

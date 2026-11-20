@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sivun kuvaus hakukoneille -->
+    <meta name="description" content="Löydä perille Kahvila Silmukkaan: osoite, aukioloajat ja ohjeet kulkemiseen kävellen, pyörällä, bussilla tai autolla. Ota yhteyttä lomakkeella.">
     <title>Yhteystiedot</title>
     <!--Google Fonts: Nunito-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap"
+    rel="stylesheet">
     <!--CSS linkitetty-->
     <link rel="stylesheet" href="css/style.css">
     <!--Favicon: SVG nykyselaimelle ja ICO vanhoille selaimille varalla-->
@@ -39,9 +41,10 @@
             <!--Yhteydenottolomake (vasen) ja yhteystiedot + aukioloajat (oikea)-->
             <section>
                 <h2>Ota yhteyttä</h2>
-                <p>Voit varata kahvilan takahuoneen yksityistilaisuuksiin, kuten neulekerhon kokoontumiseen tai
-                    syntymäpäiville. Tilaan mahtuu 15 henkeä.</p>
-                <p>Voit ottaa meihin yhteyttä koskien tilavarauksia tai muuta asiaa alla olevan lomakkeen avulla.</p>
+                <p>Meiltä voit tilata herkulliset tarjottavat juhlaan kuin juhlaan! 
+                    Voit varata kahvilasta tilan yksityistilaisuuksiin, kuten neulekerhon kokoontumiseen tai
+                    syntymäpäiville. Tilaan mahtuu 15 henkeä. Mahdollista myös tilata tarjottavat tilaisuuteen.</p>
+                <p>Voit ottaa meihin yhteyttä koskien tilauksia, tilavarauksia tai muuta asiaa alla olevan lomakkeen avulla.</p>
 
                 <div class="contact-wrapper">
 
@@ -72,8 +75,9 @@
                         </div>
 
                         <div class="form-field">
-                            <label for="aihe">Aihe</label>
-                            <select id="aihe" name="aihe">
+                            <label for="aihe">Aihe <span class="required" aria-hidden="true">*</span></label>
+                            <select id="aihe" name="aihe" required>
+                                <option value="">Valitse aihe</option>
                                 <option value="tilavaraus">Tilavaraus</option>
                                 <option value="tilaus">Tilaus</option>
                                 <option value="palaute">Palaute</option>
