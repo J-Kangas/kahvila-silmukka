@@ -253,6 +253,22 @@ img {
     margin-bottom: 8px;
 }
 
+.event-info p {
+    margin-bottom: 10px;
+}
+
+.event-info {
+    margin-bottom: 30px;
+}
+
+.event p {
+    margin-bottom: 2px;
+}
+
+.event {
+    margin-bottom: 16px;
+}
+
 /* --- Menu-kortit --- */
 
 /* Kiinteä 2 × 2 -ruudukko: juomat ylärivillä, ruoat alarivillä */
@@ -281,6 +297,35 @@ img {
     display: block;
     margin-bottom: 20px;
     border-radius: 6px;
+}
+
+/* --- Menu-taulukot --- */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+caption {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+th, td{
+    border-bottom: 1px solid var(--vaalea-koriste);
+    padding: 10px;
+    text-align: left;
+}
+
+tbody th {
+    font-weight: normal;
+}
+
+tbody tr:last-child th,
+tbody tr:last-child td {
+    border-bottom: none;
 }
 
 /* --- Kuvakaruselli (harrastusillat) --- */
@@ -351,30 +396,237 @@ img {
     border-color: var(--tumma-tausta);
 }
 
-/* --- Yhteystiedot ja kuva (yhteystiedot) --- */
 
+/* --- Lomake ja yhteystietokortti vierekkäin (yhteystiedot) --- */
+
+/* Lomake vasemmalla (leveämpi) ja yhteystietokortti oikealla.
+   align-items: start estää kortin venymisen lomakkeen korkuiseksi. */
 .contact-wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
     gap: 20px;
-    align-items: flex-start;
-    margin-bottom: 50px;
+    align-items: start;
+    margin-bottom: 100px; /* lisää väliä lomakkeen ja Näin löydät perille -osion väliin */
 }
 
-.contact-info {
-    flex: 1;
+/* --- Yhteydenottolomake --- */
+
+.contact-form {
+    background-color: var(--vaalea-kortti);
+    color: var(--vaalea-teksti);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.contact-info dl {
-    margin-top: 20px;
+/* Harrastusiltojen ilmoittautumislomake: kapeampi, jotta rivit eivät veny koko sivun levyisiksi */
+.signup-form {
+    max-width: 700px;
 }
 
-.contact-picture {
+.contact-form .form-hint {
+    font-size: 0.9rem;
+}
+
+/* Jokainen kenttä omana lohkonaan: label kentän yläpuolella */
+.form-field {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
     display: block;
-    max-width: 40%;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+/* Tekstikentät, valikko ja tekstialue koko levyisiksi.
+   font: inherit, koska selaimet eivät oletuksena peri fonttia lomakekenttiin.
+   Reunan väri on tarpeeksi tumma (kontrasti vähintään 3:1), jotta kentän rajat erottuvat. */
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font: inherit;
+    color: var(--vaalea-teksti);
+    background-color: var(--vaalea-kortti);
+    border: 1px solid var(--vaalea-linkki);
     border-radius: 6px;
-    aspect-ratio: 16/9;
+}
+
+/* Tekstialuetta voi venyttää vain pystysuunnassa, jottei asettelu hajoa */
+.contact-form textarea {
+    resize: vertical;
+}
+
+/* Näkyvä kohdistus näppäimistön käyttäjille */
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    outline: 3px solid var(--vaalea-korostus);
+    outline-offset: 2px;
+}
+
+/* Kenttäryhmät (tilavaraus ja vastaustapa) */
+.contact-form fieldset {
+    border: 1px solid var(--vaalea-koriste);
+    border-radius: 6px;
+    padding: 15px 20px 0;
+    margin-bottom: 20px;
+}
+
+.contact-form legend {
+    font-weight: 700;
+    padding: 0 5px;
+}
+
+/* Päivämäärä ja henkilömäärä vierekkäin tilavaraus-ryhmässä */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Valintanapit ja valintaruutu: ruutu ja teksti samalle riville */
+.choice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.contact-form .choice input {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    accent-color: var(--tumma-tausta);
+}
+
+.contact-form .choice label {
+    display: inline;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+/* Pakollisuutta merkitsevä tähti */
+.required {
+    color: var(--vaalea-korostus);
+}
+
+/* Lähetä-painike tumman pinnan väreillä */
+.form-button {
+    font: inherit;
+    font-weight: 700;
+    background-color: var(--tumma-tausta);
+    color: var(--tumma-teksti);
+    border: none;
+    border-radius: 6px;
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+.form-button:hover,
+.form-button:focus {
+    background-color: var(--vaalea-korostus);
+}
+
+.form-button:focus {
+    outline: 3px solid var(--vaalea-korostus);
+    outline-offset: 2px;
+}
+
+/* --- Yhteystietokortti ja aukioloajat (yhteystiedot) --- */
+
+/* Tumma kortti, samat värit kuin headerissa ja footerissa */
+.contact-card {
+    background-color: var(--tumma-tausta);
+    color: var(--tumma-teksti);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Poikkeus: kortin linkit tumman pinnan väreillä */
+.contact-card a {
+    color: var(--tumma-linkki);
+}
+
+.contact-card a:hover {
+    color: var(--tumma-hover);
+}
+
+.contact-card dl {
+    margin-top: 15px;
+}
+
+.contact-card dt {
+    font-weight: 700;
+}
+
+.contact-card dd {
+    margin-bottom: 10px;
+}
+
+/* Aukioloaikataulukko on tummalla kortilla, joten teksti vaaleaksi.
+   Sääntö ohittaa yleiset taulukkotyylit, jotka on tehty vaalealle pohjalle. */
+.contact-card .hours-table,
+.contact-card .hours-table caption,
+.contact-card .hours-table th,
+.contact-card .hours-table td {
+    color: var(--tumma-teksti);
+}
+
+/* Aukioloaikataulukko: kapeampi solujen täyte, jotta taulukko mahtuu korttiin */
+.hours-table th,
+.hours-table td {
+    padding: 8px 10px 8px 0;
+}
+
+.hours-table td {
+    white-space: nowrap; /* kellonaika ei katkea kahdelle riville */
+}
+
+/* --- Esteettömyys: kuva ja kortti vierekkäin (yhteystiedot) --- */
+
+/* Kuva vasemmalla, kortti oikealla, molemmat yhtä leveitä */
+.accessibility-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+    margin-top: 100px; /* lisää väliä kulkutapakorttien ja kuvan väliin */
+}
+
+.accessibility-picture {
+    display: block;
+    width: 100%;
+    height: 0;
+    min-height: 100%;
     object-fit: cover;
-    object-position: left;
+    border-radius: 10px;
+}
+
+/* Sama ulkoasu kuin kulkutapakorteissa */
+.accessibility-card {
+    background-color: var(--vaalea-kortti);
+    color: var(--vaalea-teksti);
+    outline: 6px double var(--vaalea-koriste);
+    outline-offset: -10px;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Kapealla näytöllä vierekkäiset osiot allekkain */
+@media (max-width: 700px) {
+
+    .contact-wrapper,
+    .accessibility-wrapper,
+    .form-row {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* --- Kulkutapakortit (yhteystiedot) --- */
@@ -445,7 +697,8 @@ img {
 /* Poistetaan viimeisen kappaleen marginaali menu- ja kulkuneuvo-korteista,
 jotta ylä- ja alareunan välit ovat yhtäsuuret. */
 .menu-card p:last-child,
-.transport-mode-item p:last-child {
+.transport-mode-item p:last-child,
+.accessibility-card p:last-child {
     margin-bottom: 0;
 }
 

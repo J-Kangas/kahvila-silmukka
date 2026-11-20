@@ -33,12 +33,105 @@
             </nav>
         </header>
 
-        <!--Main   -->
+        <!--Main-->
         <main class="main">
+
+            <!--Yhteydenottolomake (vasen) ja yhteystiedot + aukioloajat (oikea)-->
             <section>
-                <h2>Yhteystiedot</h2>
+                <h2>Ota yhteyttä</h2>
+                <p>Voit varata kahvilan takahuoneen yksityistilaisuuksiin, kuten neulekerhon kokoontumiseen tai
+                    syntymäpäiville. Tilaan mahtuu 15 henkeä.</p>
+                <p>Voit ottaa meihin yhteyttä koskien tilavarauksia tai muuta asiaa alla olevan lomakkeen avulla.</p>
+
                 <div class="contact-wrapper">
-                    <div class="contact-info">
+
+                    <!--Lomake. Taustapalvelua ei vielä ole, joten action="#"-->
+                    <form class="contact-form" action="#" method="post">
+                        <h3>Yhteydenottolomake</h3>
+                        <p class="form-hint">Tähdellä (*) merkityt kentät ovat pakollisia.</p>
+
+                        <!--Tähti piilotetaan ruudunlukijalta, koska required-attribuutti kertoo jo pakollisuuden-->
+                        <div class="form-field">
+                            <label for="nimi">Nimi <span class="required" aria-hidden="true">*</span></label>
+                            <input type="text" id="nimi" name="nimi" autocomplete="name" placeholder="Etunimi Sukunimi"
+                                required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="sahkoposti">Sähköposti <span class="required"
+                                    aria-hidden="true">*</span></label>
+                            <input type="email" id="sahkoposti" name="sahkoposti" autocomplete="email"
+                                placeholder="esimerkki@sahkoposti.fi" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="puhelin">Puhelinnumero</label>
+                            <input type="tel" id="puhelin" name="puhelin" autocomplete="tel" placeholder="040 123 4567"
+                                pattern="\+?[0-9 ]{7,15}"
+                                title="Numero voi alkaa +-merkillä, ja siinä voi olla numeroita ja välilyöntejä (7–15 merkkiä)">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="aihe">Aihe</label>
+                            <select id="aihe" name="aihe">
+                                <option value="tilavaraus">Tilavaraus</option>
+                                <option value="tilaus">Tilaus</option>
+                                <option value="palaute">Palaute</option>
+                                <option value="muu">Muu</option>
+                            </select>
+                        </div>
+
+                        <!--Tilavarauksen kentät omassa ryhmässään, koska ilman JavaScriptiä
+                            niitä ei voi näyttää vain silloin, kun aihe on tilavaraus-->
+                        <fieldset>
+                            <legend>Tilavaraus (vapaaehtoinen)</legend>
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="paivamaara">Päivämäärä</label>
+                                    <input type="date" id="paivamaara" name="paivamaara">
+                                </div>
+                                <div class="form-field">
+                                    <label for="henkilomaara">Henkilömäärä (1–15)</label>
+                                    <input type="number" id="henkilomaara" name="henkilomaara" min="1" max="15">
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Miten haluat vastauksen?</legend>
+                            <div class="choice">
+                                <input type="radio" id="vastaus-sahkoposti" name="vastaustapa" value="sahkoposti"
+                                    checked>
+                                <label for="vastaus-sahkoposti">Sähköpostilla</label>
+                            </div>
+                            <div class="choice">
+                                <input type="radio" id="vastaus-puhelin" name="vastaustapa" value="puhelin">
+                                <label for="vastaus-puhelin">Puhelimitse</label>
+                            </div>
+                            <div class="choice">
+                                <input type="radio" id="vastaus-ei" name="vastaustapa" value="ei-vastausta">
+                                <label for="vastaus-ei">En kaipaa vastausta</label>
+                            </div>
+                        </fieldset>
+
+                        <div class="form-field">
+                            <label for="viesti">Viesti <span class="required" aria-hidden="true">*</span></label>
+                            <textarea id="viesti" name="viesti" rows="6" placeholder="Kirjoita viestisi tähän..."
+                                required></textarea>
+                        </div>
+
+                        <div class="form-field choice">
+                            <input type="checkbox" id="suostumus" name="suostumus" required>
+                            <label for="suostumus">Annan luvan käyttää tietojani yhteydenottooni vastaamiseen
+                                <span class="required" aria-hidden="true">*</span></label>
+                        </div>
+
+                        <button type="submit" class="form-button">Lähetä viesti</button>
+                    </form>
+
+                    <!--Yhteystiedot ja aukioloajat tummana korttina kuvan entisellä paikalla-->
+                    <div class="contact-card">
+                        <h3>Yhteystiedot</h3>
                         <address>
                             Kahvila Silmukka<br>
                             Testikuja 1<br>
@@ -52,9 +145,25 @@
                             </dl>
                         </address>
                         <p>Löydät meidät Instagramista nimellä @kahvilasilmukka</p>
+
+                        <table class="hours-table">
+                            <caption>Aukioloajat</caption>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Maanantai - Perjantai</th>
+                                    <td>8:00 - 18:00</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Lauantai</th>
+                                    <td>9:00 - 16:00</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Sunnuntai</th>
+                                    <td>Suljettu</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <img class="contact-picture" src="images/cafe-outside-1200.jpg"
-                        alt="Kahvilan puupöytä, jolla on kukkamaljakko, ja turkoosinvihreitä tuoleja." width="1200" height="801" loading="lazy">
                 </div>
             </section>
 
@@ -114,31 +223,21 @@
                 </div>
             </section>
 
-            <section>
-                <h2>Esteettömyys</h2>
-                <p>Haluamme, että kahvilaan on helppo tulla kaikkien.</p>
-                <p>Kahvilaan on kynnyksetön sisäänkäynti katutasosta, ja ovi avautuu automaattisesti.
-                    Pöytien väliin jää tilaa pyörätuolille ja lastenvaunuille, ja tiloissa on esteetön wc.
-                    Avustajakoirat ovat aina tervetulleita.
-                    Kassalla on induktiosilmukka kuulolaitteen käyttäjille.</p>
-                <p>Jos tarvitset apua tai erityisjärjestelyjä esimerkiksi harrastusiltaan osallistuessasi, ota yhteyttä
-                    etukäteen, niin järjestämme asian.</p>
-            </section>
-
-            <section>
-                <h2>Aukioloajat</h2>
-                <p>Pyhäpäivinä ja juhlapyhien aattoina aukioloajat voivat poiketa tavallisesta. Ilmoitamme poikkeuksista
-                    etusivulla.</p>
-                <p>Aukioloajat ovat seuraavat:</p>
-                <p>Aukioloajoista on tulossa taulukko</p>
-            </section>
-
-            <section>
-                <h2>Yhteydenottolomake</h2>
-                <p>Voit varata kahvilan takahuoneen yksityistilaisuuksiin, kuten neulekerhon kokoontumiseen tai
-                    syntymäpäiville. Tilaan mahtuu 15 henkeä.</p>
-                <p>Voit ottaa meihin yhteyttä koskien tilavarauksia tai muuta asiaa alla olevan lomakkeen avulla.</p>
-                <p>Yhteydenottolomake tulossa.</p>
+            <!--Esteettömyys: kuva vasemmalla, teksti korttina oikealla-->
+            <section class="accessibility-wrapper">
+                <img class="accessibility-picture" src="images/cafe-outside-1200.jpg"
+                    alt="Kahvilan puupöytä, jolla on kukkamaljakko, ja turkoosinvihreitä tuoleja." width="1200"
+                    height="801" loading="lazy">
+                <div class="accessibility-card">
+                    <h2>Esteettömyys</h2>
+                    <p>Haluamme, että kahvilaan on helppo tulla kaikkien.</p>
+                    <p>Kahvilaan on kynnyksetön sisäänkäynti katutasosta, ja ovi avautuu automaattisesti.
+                        Pöytien väliin jää tilaa pyörätuolille ja lastenvaunuille, ja tiloissa on esteetön wc.
+                        Avustajakoirat ovat aina tervetulleita.
+                        Kassalla on induktiosilmukka kuulolaitteen käyttäjille.</p>
+                    <p>Jos tarvitset apua tai erityisjärjestelyjä esimerkiksi harrastusiltaan osallistuessasi, ota
+                        yhteyttä etukäteen, niin järjestämme asian.</p>
+                </div>
             </section>
 
         </main>
